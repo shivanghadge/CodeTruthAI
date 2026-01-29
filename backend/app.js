@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-
+const judgeRoutes = require("./routes/judge");
 // Middleware
 app.use(cors());
 app.use(express.json());
-
+app.use("/api", judgeRoutes);
 // MongoDB Connection (fixed)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected'))
